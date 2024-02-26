@@ -20,6 +20,10 @@ namespace UUTMountingProvider.DbServiceConfigurator
                     services.AddDbContext<UutMountingContext>(options =>
                         options.UseNpgsql(configuration.GetConnectionString("PostgreSQLConnection")));
                     break;
+                 case "Oracle":
+                     services.AddDbContext<UutMountingContext>(options =>
+                     options.UseOracle(configuration.GetConnectionString("OracleConnection")));
+                     break;
                 default:
                     throw new InvalidOperationException("Invalid database choice specified in appsettings.json.");
             }
